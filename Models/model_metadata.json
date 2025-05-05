@@ -1,0 +1,40 @@
+{
+    "model_name": "telematics_classifier",
+    "model_type": "RandomForestClassifier",
+    "version": "1.0",
+    "framework": "scikit-learn",
+    "features_used": [
+        "fuel_level",
+        "engine_temp",
+        "eye_closed_duration",
+        "head_tilt",
+        "head_direction",
+        "speed"
+    ],
+    "target_variable": "driver_state",
+    "classes": [
+        "awake",
+        "drowsy",
+        "distracted"
+    ],
+    "trained_on": "tucson_telematics_1000_enhanced.csv",
+    "training_script": "Telematic_Training.py",
+    "description": "Edge AI model to classify driver state from real-time telematics data.",
+    "input_format": {
+        "type": "application/json",
+        "schema": {
+            "fuel_level": "float",
+            "engine_temp": "float",
+            "eye_closed_duration": "float",
+            "head_tilt": "float",
+            "head_direction": "float",
+            "speed": "float"
+        }
+    },
+    "output_format": {
+        "type": "application/json",
+        "schema": {
+            "driver_state": "string"
+        }
+    }
+}
